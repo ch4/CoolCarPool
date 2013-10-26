@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "CCP": {
+            "applicationId": "LkqfXIckJGJTICON81dYoZx7UGZZXbUYnUtTrR21", 
+            "masterKey": "kOD93HiwAG7vD74KTOUHDsosp9ybuVp1bpz8oKSE"
+        }, 
+        "_default": {
+            "link": "CCP"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.12"
+    }
+}
