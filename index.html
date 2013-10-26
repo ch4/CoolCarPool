@@ -84,11 +84,13 @@
         var map;
         
         //var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-        var origin_icon ='http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png';
+
+        var my_origin_icon ='http://maps.google.com/mapfiles/dir_93.png';
+        var origin_icon = 'http://maps.google.com/mapfiles/kml/paddle/blu-blank.png';
           
-          var people_icon = 'http://maps.google.com/mapfiles/kml/shapes/man.png';
-          
-          var destination_icon = 'http://www.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png';
+        var my_destination_icon ='http://maps.google.com/mapfiles/kml/shapes/ranger_station.png';
+        var destination_icon = 'http://www.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png';
+        
           
            function makeStruct(names) {
                var names = names.split(' ');
@@ -128,7 +130,7 @@
             var marker = new google.maps.Marker({
                 position: myLatlng,
                 map: map,
-                icon: origin_icon,
+                icon: my_origin_icon,
                 title: "current location"
             });
             
@@ -154,7 +156,7 @@
             for (var i = 0; i < userEntries.length; i++) {
                 var src_marker = new AddrMarker(userEntries[i].name, userEntries[i].number, userEntries[i].src_location);
                 var dst_marker = new AddrMarker(userEntries[i].name, userEntries[i].number, userEntries[i].dst_location);
-                createMarker(map,src_marker,people_icon);
+                createMarker(map,src_marker,origin_icon);
                 createMarker(map,dst_marker,destination_icon);
                 limits.extend(src_marker.location);
                 limits.extend(dst_marker.location);
