@@ -1,0 +1,13 @@
+<html>
+    <script type="text/javascript" src="https://api.intel.com/js/v1/intel.redirect.min.js"/>
+    <script src='https://api.intel.com/sdk/js/v1/intel.cloudservices.js'></script>
+	<script type="text/javascript">
+		intel.user.getUserDetails(successCallback, null);
+		successCallback = function (userDetails) {
+			//userDetails.accounts[0].provider
+			//userDetails.accounts[0].userName
+			//userDetails.emails[0]
+			alert("hello " + userDetails.accounts[0].userName);
+		}
+	</script>
+</html>
