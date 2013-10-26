@@ -103,6 +103,7 @@
                 center: initialLocation, 
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
+            
             map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
                     
             //phonegap geolocation call
@@ -126,9 +127,9 @@
         };
         
         function addOtherDudes (count) {
-            for(int i = 0; i < count; ++i){
-                
-            }
+//            for(int i = 0; i < count; ++i){
+//                
+//            }
             
             var marker = new google.maps.Marker({
                 position: myLatlng,
