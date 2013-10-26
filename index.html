@@ -25,31 +25,123 @@
     </script>
 </head>
 <body>
-    <div class="coolcarpool" data-role="page" id="main">
-                <div data-role="header" >
-                        
-                                        <h1>CoolCarpool</h1>
-                                        <button class="ui-btn-right" onclick="$.mobile.changePage( '#profile', { transition: 'slideup'} )" data-icon="gear">Profile</button>
-
-                </div>
-                        <div data-role="content" >
-                                <h2>Home</h2> 
-                        <button onclick="$.mobile.changePage( '#map', { transition: 'slideup'} );onLoadMap()">View Map</button>
-                        <button onclick="$.mobile.changePage( '#calendar', { transition: 'slideup'} )">Calendar</button>                        
-                </div>
-                <div data-role="footer" data-position="fixed">
-                                <div data-role="navbar">
-                                        <ul>
-                                                <li><a href="#" class="ui-btn-active" onclick="$.mobile.changePage( '#main', { transition: 'slideup'} )">Home</a></li>
-                                                <li><a href="#" onclick="$.mobile.changePage( '#map', { transition: 'slideup'} )">Map</a></li>
-                                                <li><a href="#" onclick="$.mobile.changePage( '#calendar', { transition: 'slideup'} )">Calendar</a></li>
-                                                <li><a href="#" onclick="$.mobile.changePage( '#testarea', { transition: 'slideup'} )">Test Area</a></li>
-                                        </ul>
-                                </div><!-- /navbar -->
-                        </div><!-- /footer -->
-                
-                </div>
     
+<!--    Home page-->
+    <div class="coolcarpool" data-role="page" id="main">
+		<div data-role="header" >
+			<h1>CoolCarpool</h1>
+			<button class="ui-btn-right" onclick="$.mobile.changePage( '#profile', { transition: 'slideup'} )" data-icon="gear">Profile</button>
+		</div>
+			<div data-role="content" >
+					<h2>Home</h2> 
+			<button onclick="$.mobile.changePage( '#map', { transition: 'slideup'} );onLoadMap()">View Map</button>
+			<button onclick="$.mobile.changePage( '#calendar', { transition: 'slideup'} )">Calendar</button>                        
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+                <ul>
+                    <li><a href="#" class="ui-btn-active" onclick="$.mobile.changePage( '#main', { transition: 'slideup'} )">Home</a></li>
+                    <li><a href="#" onclick="$.mobile.changePage( '#map', { transition: 'slideup'} )">Map</a></li>
+                    <li><a href="#" onclick="$.mobile.changePage( '#calendar', { transition: 'slideup'} )">Calendar</a></li>
+                    <li><a href="#" onclick="$.mobile.changePage( '#testarea', { transition: 'slideup'} )">Test Area</a></li>
+                </ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+	</div>
+    
+<!--    Map page-->
+    <div class="coolcarpool" data-role="page" id="map">
+		<div data-role="header" >
+            <a href="#" data-role="button" data-rel="back" data-icon="arrow-l">Back</a>
+            <h1>Map</h1>
+            <button class="ui-btn-right" onclick="$.mobile.changePage( '#profile', { transition: 'slideup'} )" data-icon="gear">Profile</button>
+        </div>
+		<div data-role="content" >
+<!--            content goes here-->
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+                <ul>
+                    <li><a href="#" onclick="$.mobile.changePage( '#main', { transition: 'slideup'} )">Home</a></li>
+                    <li><a href="#" class="ui-btn-active" onclick="$.mobile.changePage( '#map', { transition: 'slideup'} )">Map</a></li>
+                    <li><a href="#" onclick="$.mobile.changePage( '#calendar', { transition: 'slideup'} )">Calendar</a></li>
+                    <li><a href="#" onclick="$.mobile.changePage( '#testarea', { transition: 'slideup'} )">Test Area</a></li>
+                </ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+	</div>
+    
+<!--    Calendar page-->
+    <div class="coolcarpool" data-role="page" id="calendar">
+		<div data-role="header" >
+            <a href="#" data-role="button" data-rel="back" data-icon="arrow-l">Back</a>
+            <h1>Calendar</h1>
+            <button class="ui-btn-right" onclick="$.mobile.changePage( '#profile', { transition: 'slideup'} )" data-icon="gear">Profile</button>
+        </div>
+        <div data-role="content" >
+<!--            content goes here-->
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+                <ul>
+                    <li><a href="#" onclick="$.mobile.changePage( '#main', { transition: 'slideup'} )">Home</a></li>
+                    <li><a href="#" onclick="$.mobile.changePage( '#map', { transition: 'slideup'} )">Map</a></li>
+                    <li><a href="#" class="ui-btn-active" onclick="$.mobile.changePage( '#calendar', { transition: 'slideup'} )">Calendar</a></li>
+                    <li><a href="#" onclick="$.mobile.changePage( '#testarea', { transition: 'slideup'} )">Test Area</a></li>
+                </ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+	</div>
+    
+    <!--    Profile page-->
+    <div class="coolcarpool" data-role="page" id="profile">
+		<div data-role="header" >
+            <a href="#" data-role="button" data-rel="back" data-icon="arrow-l">Back</a>
+            <h1>Profile</h1>
+        </div>
+        <div data-role="content" >
+<!--            content goes here-->
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+                <ul>
+                    <li><a href="#" onclick="$.mobile.changePage( '#main', { transition: 'slideup'} )">Home</a></li>
+                    <li><a href="#" onclick="$.mobile.changePage( '#map', { transition: 'slideup'} )">Map</a></li>
+                    <li><a href="#" onclick="$.mobile.changePage( '#calendar', { transition: 'slideup'} )">Calendar</a></li>
+                    <li><a href="#" onclick="$.mobile.changePage( '#testarea', { transition: 'slideup'} )">Test Area</a></li>
+                </ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+	</div>
+    
+<!--    Test Page-->
+    <div class="coolcarpool" data-role="page" id="testarea">
+        <div data-role="header" >
+            <a href="#" data-role="button" data-rel="back" data-icon="arrow-l">Back</a>
+            <h1>Test Area</h1>
+            <button class="ui-btn-right" onclick="$.mobile.changePage( '#profile', { transition: 'slideup'} )" data-icon="gear">Profile</button>
+        </div>
+        <div data-role="content" >
+            <h2>Test text is below:</h2>
+            <span id="testspan"></span>
+            <br><br>
+    
+            <h2>Test Functions</h2>
+            <button onclick="$('#testarea #testspan').text('Hello World!')">Hello World</button>
+            <button onclick="$('#testarea #testspan').text(AppMobi.device.uuid)">Get Device UUID</button>
+            <button onclick="$('#testarea #testspan').text(AppMobi.device.name)">Get Device Name</button>
+        </div>
+        <div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+                <ul>
+                    <li><a href="#" onclick="$.mobile.changePage( '#main', { transition: 'slideup'} )">Home</a></li>
+                    <li><a href="#" onclick="$.mobile.changePage( '#map', { transition: 'slideup'} )">Map</a></li>
+                    <li><a href="#" onclick="$.mobile.changePage( '#calendar', { transition: 'slideup'} )">Calendar</a></li>
+                    <li><a href="#" class="ui-btn-active" onclick="$.mobile.changePage( '#testarea', { transition: 'slideup'} )">Test Area</a></li>
+                </ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+    </div>
   <!-- content goes here-->
 </body>
 </html>
