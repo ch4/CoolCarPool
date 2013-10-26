@@ -1,15 +1,6 @@
 var map;
 var infowindow;
 
-
-//create a marker given a place
-function createMarker(place) {
-  var placeLoc = place.geometry.location;
-  var marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
-  });
-    
 function initialize() {
   var pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
 
@@ -37,6 +28,12 @@ function callback(results, status) {
   }
 }
 
+function createMarker(place) {
+  var placeLoc = place.geometry.location;
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+  });
 
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(place.name);
@@ -46,4 +43,4 @@ function callback(results, status) {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-intel.xdk.device.hideSplashScreen()
+document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
