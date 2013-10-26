@@ -1,4 +1,5 @@
-var geocoder;
+var geocoder = new google.maps.Geocoder();
+/*
 var map;
 function initialize() {
   geocoder = new google.maps.Geocoder();
@@ -9,7 +10,9 @@ function initialize() {
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    alert("initialized");
 }
+*/
 
 function codeAddress() {
   var address = document.getElementById('address').value;
@@ -23,8 +26,8 @@ function codeAddress() {
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
+      alert("printing results" +results[0]);
   });
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
-
+//google.maps.event.addDomListener(window, 'load', initialize);
