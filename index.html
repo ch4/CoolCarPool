@@ -20,11 +20,13 @@
     <script type="text/javascript" src="jquery.ui.map.full.min.js"></script>
     <script type="text/javascript" src="jquery.ui.map.services.min.js"></script>
     <script type="text/javascript" src="jquery.ui.map.extensions.js"></script>
+    <script type="text/javascript" src="geodecoder.js"></script>
     <script type="text/javascript">
         /* This code is used to run as soon as Intel activates */
         var onDeviceReady=function(){
           //hide splash screen
           intel.xdk.device.hideSplashScreen();
+            
         };
         document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
     </script>
@@ -73,6 +75,7 @@
             initSuccessCallback,
             errorCallback
         );
+        
         
     </script>
     
@@ -285,6 +288,7 @@
             <button onclick="$('#testarea #testspan').text('Hello World!')">Hello World</button>
             <button onclick="$('#testarea #testspan').text(AppMobi.device.uuid)">Get Device UUID</button>
             <button onclick="$('#testarea #testspan').text(AppMobi.device.name)">Get Device Name</button>
+            <button onclick="$.mobile.changePage( '#geocode_test', { transition: 'fade'} )">GEOCODE</button>
         </div>
         <div data-role="footer" data-position="fixed">
 			<div data-role="navbar">
@@ -297,6 +301,31 @@
 			</div><!-- /navbar -->
 		</div><!-- /footer -->
     </div>
-  <!-- content goes here-->
+<!-- new page for geocode -->
+     <div class="coolcarpool" data-role="page" id="geocode_test">
+        <div data-role="header" >
+            <a href="#" data-role="button" data-rel="back" data-icon="arrow-l">Back</a>
+            <h1>Test Area</h1>
+            <button class="ui-btn-right" onclick="$.mobile.changePage( '#profile', { transition: 'fade'} )" data-icon="gear">Profile</button>
+        </div>
+        <div data-role="content" >
+            <!--   Geocoding stuffs -->
+    <div id="panel">
+      <input id="address" type="textbox" value="Dallas, TX">
+      <input type="button" value="Geocode" onclick="codeAddress()">
+    </div>
+    <div id="map-canvas"></div>
+        </div>
+        <div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+                <ul>
+                    <li><a href="#" onclick="$.mobile.changePage( '#main', { transition: 'fade'} )">Home</a></li>
+                    <li><a href="#" onclick="$.mobile.changePage( '#map', { transition: 'fade'} );onLoadMap();">Map</a></li>
+                    <li><a href="#" onclick="$.mobile.changePage( '#calendar', { transition: 'fade'} )">Calendar</a></li>
+                    <li><a href="#" class="ui-btn-active" onclick="$.mobile.changePage( '#testarea', { transition: 'fade'} )">Test Area</a></li>
+                </ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+    </div>
 </body>
 </html>
