@@ -1,25 +1,33 @@
-<!DOCTYPE html><!--HTML5 doctype-->
+
+<!DOCTYPE html>
 <html>
-<head>
-  <title>Your New Application</title>
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
-  <style type="text/css">
-    /* Prevent copy paste for all elements except text fields */
-    *  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
-    input, textarea  { -webkit-user-select:text; }
-  </style>
-  <script src='intelxdk.js'></script>
-  <script type="text/javascript">
-    /* This code is used to run as soon as Intel activates */
-    var onDeviceReady=function(){
-      //hide splash screen
-      intel.xdk.device.hideSplashScreen();
-    };
-    document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
-    </script>
+  <head>
+    <title>Place searches</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+      <script src='intelxdk.js'></script>
+      <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>  
+      <script src="js/place_lookup.js"></script>
 </head>
 <body>
-  <!-- content goes here-->
-</body>
+    <div id="map-canvas" style="width: 50%; float:left"></div>
+    <div style="width:46%; float:left">
+      <pre>
+var request = {
+  location: new google.maps.LatLng(-33.8665433, 151.1956316),
+  radius: 500,
+  types: ['store']
+};
+      </pre>
+  </body>
+
 </html>
+    
+    

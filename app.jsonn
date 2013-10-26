@@ -1,0 +1,13 @@
+{
+"reponame":"coolcarpool",
+"title":"carpool app",
+"tooltip":"app",
+"description":"decription.",
+"articleUrl":"",
+"keywords":["GPS","intel.xdk API"],
+"visible" : "true",
+"highlights" : ["GPS","intel.xdk API"],
+"apppreview":"true",
+"appname":"demo.geolocationnew",
+"relname":"4.0.0"
+}
