@@ -11,12 +11,17 @@
         padding: 0px
       }
     </style>
+      <script src="js/locationService.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
       <script src="js/place_lookup.js"></script>
+      
+      
   </head>
   <body>  
+    <div id="map-canvas" style="width: 90%; float:left"></div>
+      <p id="demo">Click the button to get your coordinates:</p>
+     <button onclick="getLocation()">Try It</button>
       
-    <div id="map-canvas" style="width: 100%; float:left"></div>
   </body>
 </html>
     
