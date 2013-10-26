@@ -84,17 +84,25 @@
         var map;
         
         //var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-        var icons = {
-          origin: {
-            icon: 'http://maps.google.com/mapfiles/kml/paddle/red-circle.png'
-          },
-          people: {
-            icon: 'http://maps.google.com/mapfiles/kml/shapes/man.png'
-          },
-          destination: {
-            icon: 'http://maps.google.com/mapfiles/kml/paddle/stop.png'
-          }
-        };
+        var origin_icon ='http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png';
+          
+          var people_icon = 'http://maps.google.com/mapfiles/kml/shapes/man.png';
+          
+          var destination_icon = 'http://www.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png';
+          
+           function makeStruct(names) {
+               var names = names.split(' ');
+               var count = names.length;
+               function constructor() {
+                   for (var i = 0; i < count; i++) {
+                       this[names[i]] = arguments[i];
+                   }
+               }
+               return constructor;
+           }
+        
+            var UserEntry = makeStruct("name number src_location dst_location")    
+            var AddrMarker = makeStruct("name number location");
 
         function initMap(){
             var initialLocation = new google.maps.LatLng(latitude, longitude);
@@ -116,15 +124,60 @@
             
             var myLatlng = new google.maps.LatLng(latitude,longitude);
             
+            
             var marker = new google.maps.Marker({
                 position: myLatlng,
                 map: map,
+                icon: origin_icon,
                 title: "current location"
             });
-            map.setCenter(myLatlng);
             
-            addOtherDudes(3);
-        };
+            var srcLat = new Array();
+            srcLat[0] = new google.maps.LatLng(37.3292,-121.8794);
+            srcLat[1] = new google.maps.LatLng(37.3600,-121.9894);
+            srcLat[2] = new google.maps.LatLng(37.4200,-122.0000);
+
+            var dstLat = new Array();
+            dstLat[0] = new google.maps.LatLng(37.3444,-122.049922);
+            dstLat[1] = new google.maps.LatLng(37.4444,-122.054922);
+            dstLat[2] = new google.maps.LatLng(37.3322,-122.065922);
+    
+
+
+            var userEntries = new Array();
+            userEntries[0] = new UserEntry("Rahul","545",srcLat[0],dstLat[0]);
+            userEntries[1] = new UserEntry("Udi","765",srcLat[1],dstLat[1]);
+            userEntries[2] = new UserEntry("Harvey","987",srcLat[2],dstLat[2]);
+            //var userEntries =
+            //limits are used to auto zoom
+            var limits = new google.maps.LatLngBounds();
+            for (var i = 0; i < userEntries.length; i++) {
+                var src_marker = new AddrMarker(userEntries[i].name, userEntries[i].number, userEntries[i].src_location);
+                var dst_marker = new AddrMarker(userEntries[i].name, userEntries[i].number, userEntries[i].dst_location);
+                createMarker(map,src_marker,people_icon);
+                createMarker(map,dst_marker,destination_icon);
+                limits.extend(src_marker.location);
+                limits.extend(dst_marker.location);
+
+            }   
+            map.fitBounds(limits);
+           };
+        
+          function createMarker(map,addMarker, icon_type) {
+              var marker = new google.maps.Marker({
+                 position: addMarker.location,
+                 map: map,
+                 icon: icon_type
+            });
+    
+            var infowindow = new google.maps.InfoWindow();
+    
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(addMarker.name + "<br />" + addMarker.number+ "<br />" + addMarker.location);
+                infowindow.open(map, this);
+            });
+    
+}
         
         function addOtherDudes (count) {
 //            for(int i = 0; i < count; ++i){
