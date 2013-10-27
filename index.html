@@ -37,7 +37,7 @@
     <script type="application/javascript">
         var userprofile;
         function initSuccessCallback (data){
-            intel.profile.getUserProfile (function (data2) {userprofile = data2; $.mobile.changePage( '#main', { transition: 'fade'} );},
+            intel.profile.getUserProfile (function (data2) {userprofile = data2; $.mobile.changePage( '#main', { transition: 'fade'} );initMap();},
             function (data2) {intel.auth.login({
                     redirectUri: "http://ccp.parseapp.com/intelcallback.html",
                     name: "myLoginWindow",
@@ -63,6 +63,7 @@
             alert("Hello " + profile.basic.firstName);
             userprofile = profile;
             $.mobile.changePage( '#main', { transition: 'fade'} );
+			initMap();
         }
         function errorCallback (error) {
             alert("Error: " + error.desc);
