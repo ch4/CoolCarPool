@@ -220,6 +220,17 @@
       alert("printing results" +results[0]);
   });
 }    
+    
+            var errorCallback = function () {}
+        
+        var successUploadItemCallback = function () {}
+        var errorCallback = function () {}
+        
+        var successGetCollectionCallback = function(collection)
+        {
+            options = { item: { userID: uID, fname: name, phn: phone, destLoc: destLoc, origLoc: depLoc, dateTm: depTime, note: notes}};
+            myCollection.uploadItem(options, successUploadItemCallback, errorCallback);
+        }
         
     function submitForm()
         {
@@ -238,18 +249,10 @@
             options = {datasetId: "1832b7d6ddab4829b5e54c707551b3a6", collectionId: "22f5e24aca204e139b4b9df9fd68afda"};
             intel.catalog.getCollectionById(options, successGetCollectionCallback, erorCallback);
         }
-        
-        successGetCollectionCallBack = function(collection)
-        {
-            options = { item: { userID: uID, fname: name, phn: phone, destLoc: destLoc, origLoc: depLoc, dateTm: depTime, note: notes}};
-            myCollection.uploadItem(options, successUploadItemCallback, errorCallback);
-        }
-        
-        errorCallback = function () {}
-        
-        successUploadItemCallback = function () {}
-        errorCallback = function () {}
     
+    
+        
+        
     </script>
 </head>
 <body>
