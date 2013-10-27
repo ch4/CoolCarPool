@@ -202,21 +202,38 @@
     </script>
     
     <script>
+        var myLocation;
+    function codeAddress(x) {
+  geocoder.geocode( { 'address': x}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+        myLocation = results;
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+      alert("printing results" +results[0]);
+  });
+}    
+        
     function submitForm()
         {
-            var destText = document.getElementById("destinationTxt");
-            var depText = document.getElementById("departureTxt");
-            var notes = document.getElementById("notesTxt");
+            var destText = document.getElementById("destinationTxt").value;
+            var notes = document.getElementById("notesTxt").value;
             
-            var name userprofile.basic.firstName;
-            var phone;
-            var uID;
+            var name = userprofile.basic.firstName;
+            var phone = userprofile.extended.telephone.mobile;
+            var uID = userprofile.;
             
-            var destLat;
-            var destLong;
+            codeAddress(destText);
+            var destLoc = myLocation[0].geometry.location;
             
-            var depLat;
-            var depLong;
+            var depLoc = new google.maps.LatLng(latitude, longitude);
+            
+            depTime = document.getElementById("departureTxt").value;
             
             options = {datasetId: myDatasetId, collectionId: myCollectionId};
             intel.catalog.getCollectionById(options, successGetCollectionCallback, erorCallback);
@@ -224,7 +241,7 @@
         
         successGetCollectionCallBack = function(collection)
         {
-            options = { item: { userID: uID, fname: name, phn: phone, destLat: destLat, destLong: destLong, origLat: depLat, origLong: depLong, dateTm: depTime, note: notes}};
+            options = { item: { userID: uID, fname: name, phn: phone, destLoc: destLoc, origLoc: depLoc, dateTm: depTime, note: notes}};
             myCollection.uploadItem(options, successUploadItemCallback, errorCallback);
         }
         

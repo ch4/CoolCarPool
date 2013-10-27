@@ -1,0 +1,85 @@
+<html>
+    <head>
+        
+<script src='intelxdk.js'></script>
+<!--    <script src='jquery-2.0.3.min.js'></script>-->
+    <script src='jquery-1.9.1.min.js'></script>
+    <script src='jquery.mobile-1.3.2.min.js'></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    <script type="text/javascript" src="jquery.ui.map.full.min.js"></script>
+    <script type="text/javascript" src="jquery.ui.map.services.min.js"></script>
+    <script type="text/javascript" src="jquery.ui.map.extensions.js"></script>
+            <script src='https://api.intel.com/sdk/js/v1/intel.cloudservices.js'></script>
+<script>
+var userprofile;
+    var myDatasetId;
+    var myCollectionId;
+        var usertoken;
+    var options;
+        function initSuccessCallback (){
+            intel.profile.getUserProfile (function (data2) {$.mobile.changePage( '#main', { transition: 'fade'} );},
+            function (data2) {intel.auth.login({
+                    redirectUri: "http://ccp.parseapp.com/intelcallback.html",
+                    name: "myLoginWindow",
+                    specs: "location=1,status=1,scrollbars=1,width=700,height=400"
+                },
+                loginSuccessCallback,
+                errorCallback
+                );});
+                
+        }
+        function loginSuccessCallback (data) {
+            var authType = data.access_token.authentication_type;
+            usertoken = data.access_token;
+//            document.getElementById("statusBox").innerHTML +=
+//            "<br/>Login Success! Auth Type: " + authType;
+            //alert("Login successful");
+            createDataSet(data);
+        }
+        
+        function errorCallback (error) {
+            alert("Error: " + error.desc);
+        }
+        
+        intel.auth.init({
+                clientId: "TqsdmQDQa5AM09L38XogbIkNANF4mzxG",
+                secretId: "lTJSWa9SftVIjeIX",
+                scope: "user:details user:scope profile:full profile:basic location:basic"
+            },
+            initSuccessCallback,
+            errorCallback
+        );
+
+function createDataSet(data) {
+options = { name: "BringMeThere2" };
+intel.catalog.admin.createDataset(options, successCreateDsCallback, errorCallback);
+}
+successCreateDsCallback = function(data) {
+myDatasetId = data.id;
+alert("My datasetID " + myDatasetId);
+    options = { datasetId: myDatasetId, name: "Appointments2"};
+intel.catalog.admin.createCollection(options, successCreateCollCallback, errorCallback);
+}
+
+successCreateCollCallback = function(data){
+myCollectionId = data.id;
+    alert("My collectionID " + myCollectionId);
+options = {datasetId: myDatasetId, collectionId: myCollectionId};
+intel.catalog.admin.removeCollection(options, successRemoveCollCallback, errorCallback);
+}
+successRemoveCollCallback = function(data){
+options = {datasetId: myDatasetId};
+intel.catalog.admin.removeDataset(options, successRemoveDsCallback, errorCallback);
+}
+successRemoveDsCallback = function(data){
+//Dataset removed
+}
+
+</script>
+</head>
+<body onLoad="initSuccessCallback()">
+    <input type=text id=dataset/>
+    <input type=text id=collection/>
+    </body>
+</html>
