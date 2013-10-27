@@ -203,10 +203,11 @@
     
     <script>
         var myLocation;
+        var destLoc;
     function codeAddress(x) {
   geocoder.geocode( { 'address': x}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
-        myLocation = results;
+        destLoc = results[0].geometry.location;
       map.setCenter(results[0].geometry.location);
       var marker = new google.maps.Marker({
           map: map,
@@ -222,20 +223,18 @@
     function submitForm()
         {
             var destText = document.getElementById("destinationTxt").value;
+                        codeAddress(destText);
             var notes = document.getElementById("notesTxt").value;
             
             var name = userprofile.basic.firstName;
             var phone = userprofile.extended.telephone.mobile;
-            var uID = userprofile.;
-            
-            codeAddress(destText);
-            var destLoc = myLocation[0].geometry.location;
+            var uID = userprofile;
             
             var depLoc = new google.maps.LatLng(latitude, longitude);
             
             depTime = document.getElementById("departureTxt").value;
             
-            options = {datasetId: myDatasetId, collectionId: myCollectionId};
+            options = {datasetId: "1832b7d6ddab4829b5e54c707551b3a6", collectionId: "22f5e24aca204e139b4b9df9fd68afda"};
             intel.catalog.getCollectionById(options, successGetCollectionCallback, erorCallback);
         }
         
