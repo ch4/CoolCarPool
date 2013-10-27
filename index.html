@@ -36,7 +36,7 @@
     <script type="application/javascript">
         var userprofile;
         function initSuccessCallback (data){
-            intel.profile.getUserProfile (function (data2) {$.mobile.changePage( '#main', { transition: 'fade'} );},
+            intel.profile.getUserProfile (function (data2) {userprofile = data2; $.mobile.changePage( '#main', { transition: 'fade'} );},
             function (data2) {intel.auth.login({
                     redirectUri: "http://ccp.parseapp.com/intelcallback.html",
                     name: "myLoginWindow",
@@ -232,7 +232,7 @@
             <label for="notesTxt">Notes:</label>
             <input type="text" name="notesTxt" id="notesTxt" value="">
             <br/>
-            <a onclick="onLoadMap();" href="#map" data-role="button" data-theme="b" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span">Find Rides</a>
+            <a onclick="onLoadMap();submitForm();" href="#map" data-role="button" data-theme="b" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span">Find Rides</a>
 		</div>
 		<!--<div data-role="footer" data-position="fixed">
 			<div data-role="navbar">
