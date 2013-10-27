@@ -200,6 +200,40 @@
                 alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
         }
     </script>
+    
+    <script>
+    function submitForm()
+        {
+            var destText = document.getElementById("destinationTxt");
+            var depText = document.getElementById("departureTxt");
+            var notes = document.getElementById("notesTxt");
+            
+            var name userprofile.basic.firstName;
+            var phone;
+            var uID;
+            
+            var destLat;
+            var destLong;
+            
+            var depLat;
+            var depLong;
+            
+            options = {datasetId: myDatasetId, collectionId: myCollectionId};
+            intel.catalog.getCollectionById(options, successGetCollectionCallback, erorCallback);
+        }
+        
+        successGetCollectionCallBack = function(collection)
+        {
+            options = { item: { userID: uID, fname: name, phn: phone, destLat: destLat, destLong: destLong, origLat: depLat, origLong: depLong, dateTm: depTime, note: notes}};
+            myCollection.uploadItem(options, successUploadItemCallback, errorCallback);
+        }
+        
+        errorCallback = function () {}
+        
+        successUploadItemCallback = function () {}
+        errorCallback = function () {}
+    
+    </script>
 </head>
 <body>
 
