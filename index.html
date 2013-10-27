@@ -215,6 +215,7 @@
         var name;
         var phone;
         var notes;
+        var myItems;
     function codeAddress(x) {
   geocoder.geocode( { 'address': x}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
@@ -231,9 +232,13 @@
   });
 }    
     
-            var errorCallback = function () {}
+            var errorCallback = function () {
+                alert("SomeError");
+            }
         
-        var successUploadItemCallback = function () {}
+        var successUploadItemCallback = function (x) {
+
+        }
         var errorCallback = function () {}
         
         var successGetCollectionCallback = function(collection)
@@ -241,6 +246,8 @@
             myCollection = collection;
             options = { item: { userID: uID, fname: name, phn: phone, destLoc: destLoc, origLoc: depLoc, dateTm: depTime, note: notes}};
             myCollection.uploadItem(options, successUploadItemCallback, errorCallback);
+            
+            getItems();
         }
         
     function submitForm()
@@ -268,8 +275,7 @@ limit: 4
 myCollection.getItems(
 options,
 function(items){
-myItems = items;
-    alert(myItems.size);
+ myItems = items;
 //alert(JSON.stringify(myItems));
 },
 errorCallback
